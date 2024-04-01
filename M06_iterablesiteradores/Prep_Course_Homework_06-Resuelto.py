@@ -63,10 +63,6 @@ for i, e in enumerate(lista):
 
 lista = [1,2,5,7,8,10,13,14,15,17,20]
 
-
-# In[11]:
-
-
 n = 1
 while(n <= 20):
     if (not(n in lista)):

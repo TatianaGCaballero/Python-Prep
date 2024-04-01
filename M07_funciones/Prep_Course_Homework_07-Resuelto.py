@@ -64,7 +64,7 @@ def valor_modal(lista):
     return moda, maximo
 
 
-# In[36]:
+
 
 
 lis = [1,1,5,6,8,10,22,5,6,4,11,9,5]
