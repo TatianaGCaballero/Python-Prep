@@ -1,140 +1,115 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Estrucura de datos
 
-# ## Estructuras de Datos
+# Crea una lista de ciudades que tenga 5 elementos e imprime
 
-# 1) Crear una lista que contenga nombres de ciudades del mundo que contenga más de 5 elementos e imprimir por pantalla
-
-ciudades = ['cali', 'medellin', 'Bogota', 'popayan', 'santa marta', 'neiva']
+ciudades = ['cali', 'bogota', 'medellin', 'armenia', 'villavicencio']
 print(ciudades)
 
-
-
-
-# 2) Imprimir por pantalla el segundo elemento de la lista
-
+# imprima el segundo elemento
 print(ciudades[1])
-# 3) Imprimir por pantalla del segundo al cuarto elemento
-print(ciudades[1:4])
 
-# 4) Visualizar el tipo de dato de la lista
+# imprima del segundo al cuarto elemento
+print(ciudades[1:5])
 
-print(type(ciudades))
+# ver el tipo de dato de la lista
+print('El tipo de dato de la lista es una', type(ciudades))
 
-
-# 5) Visualizar todos los elementos de la lista a partir del tercero de manera genérica, es decir, sin explicitar la posición del último elemento
-
+# ver los elelemtos de la lista a partir del tercer elelemto
 print(ciudades[2:])
 
+# ver los primeros 4 elelemtos
 
-# 6) Visualizar los primeros 4 elementos de la lista
+print(ciudades[:4])
 
-print(ciudades[0:4])
+# agrega una ciudad que ya exista y otra nueva
 
-# 7) Agregar una ciudad más a la lista que ya exista y otra que no ¿Arroja algún tipo de error?
-
-ciudades.append('New york')
-print(ciudades)
-ciudades.append('Bogota')
-print(ciudades)
-
-# 8) Agregar otra ciudad, pero en la cuarta posición
-
-ciudades.insert(3, 'Cali')
+# si agrego los dos elementos con append si me da error
+ciudades.append('popayan')
+ciudades.append('cali')
 print(ciudades)
 
-# 9) Concatenar otra lista a la ya creada
+# agrega otra ciudad en la 4 posicion
 
-lista_2 = ['popayan', 'meta', 'villavicencio']
-concatenacion = ciudades + lista_2
+ciudades.insert(3, 'ibague')
+print(ciudades)
+
+# concatenar otra lista a la ya creada
+
+departamentos = ['valle', 'cundinamarca','antioquia','tolima','quindio','meta','cauca']
+concatenacion = ciudades + departamentos
 print(concatenacion)
 
-# 10) Encontrar el índice de la ciudad que en el punto 7 agregamos duplicada. ¿Se nota alguna particularidad?
+# que pasa si busco un elemento no existente: DA ERROR
 
-ciudad = ciudades.index('Bogota')
-print(ciudad)
+# elimina un elemento de la lista
+concatenacion.pop(0)
+print(concatenacion)
 
-# 11) ¿Qué pasa si se busca un elemento que no existe?
-# me aparece un value error
+# que pasa si el elemento que elimine no existe: DA ERROR PORQUE ME SALI DEL RANGO
 
-# 12) Eliminar un elemento de la lista
+# extraer el ultimo elemento de la lista y guardarlo en variable
 
-eliminado = ciudades.pop(0)
-print(ciudades)
+resultado = departamentos.pop()
+print(resultado)
 
-
-
-
-# 13) ¿Qué pasa si el elemento a eliminar no existe?
-# me aparece que me sali del rango
-
-
-
-
-
-
-# 14) Extraer el úlimo elemento de la lista, guardarlo en una variable e imprimirlo
-
-eliminado = ciudades.pop()
-print(eliminado)
-
-# 15) Mostrar la lista multiplicada por 4
+# mostrar la lista multiplicada por 4
 
 multiplicacion = ciudades * 4
+print(multiplicacion)
 
-# 16) Crear una tupla que contenga los números enteros del 1 al 20
-tupla = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+# Crear una tupla del 1 al 20
 
-# 17) Imprimir desde el índice 10 al 15 de la tupla
+tupla = tuple(range(1, 20))
+print(tupla)
+
+# imprime desde el 10 al 15
 
 print(tupla[9:15])
 
-# 18) Evaluar si los números 20 y 30 están dentro de la tupla
+# Evalua si los numeros 20 y 30 estan en la tupla
 
 resultado = 20 in tupla
+resultado1 = 30 in tupla
+
 print(resultado)
+print(resultado1)
 
-resultado = 30 in tupla
-print(resultado)
-
-# 19) Con la lista creada en el punto 1, validar la existencia del elemento 'París' y si no existe, agregarlo. Utilizar una variable e informar lo sucedido.
-
-
+# en la lista de ciudades buscar si esta paris si no esta añadalo
 resultado = 'paris' in ciudades
 print(resultado)
 
-
-ciudades.append('Paris')
+ciudades.append('paris')
 print(ciudades)
 
-# 20) Mostrar la cantidad de veces que se encuentra un elemento específico dentro de la tupla y de la lista
+# mostrar cuantas veces se encuentra un elemento especifico
 
-print(tupla.count(10))
-print(ciudades.count('Bogota'))
+print(tupla.count(3))
+print(ciudades.count('bogota'))
 
-# 21) Convertir la tupla en una lista
+# convertir tupla en lista
 
 lista = list(tupla)
 print(lista)
 
-# 22) Desempaquetar solo los primeros 3 elementos de la tupla en 3 variables
-tupla2 = 1,2,3
-a,b,c = tupla2
+# desempaquetar los 3 primeros elementos de la tupla
+
+tupla1 = (1,2,3)
+a,b,c = tupla1
 print(a,b,c)
 
-# 23) Crear un diccionario utilizando la lista crada en el punto 1, asignandole la clave "ciudad". Agregar tambien otras claves, como puede ser "Pais" y "Continente".
-
+# crea un diccionario
 diccionario = {'Ciudad': 'paris',
                'continente': 'Europa',
                'pais': 'francia'}
 
 print(diccionario)
 
-# 24) Imprimir las claves del diccionario
+# imprima las claves
 
-print(diccionario.keys)
+claves = diccionario.keys()
+print(claves)
 
-# 25) Imprimir las ciudades a través de su clave
+# imprima la ciudad a travez de su clave
 
 print(diccionario['Ciudad'])
 
