@@ -1,133 +1,52 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## Funciones
-
-# 1) Crear una función que reciba un número como parámetro y devuelva si True si es primo y False si no lo es
+# Funciones
+# Crea una funcion que reciba un numero si es primo es True si no es False
 
 def numero2(num):
-    if num % num == 1:
-        return 'es primo'
-    else:
+    if num % 2 == 0:
         return 'no primo'
-    
-resultado = numero2(4)
+    else:
+        return 'primo'
+
+
+resultado = numero2(3)
 print(resultado)
 
-# 2) Utilizando la función del punto 1, realizar otra función que reciba de parámetro una lista de números y devuelva sólo aquellos que son primos en otra lista
-
+# pase como parametro una lista y decir si es primo o no
 lista = [1,2,3,4,5,6]
 
 def numeros_primos(lista):
     for i in lista:
-        if i%i == 0:
-            print('es primo')
-        else:
+        if i % 2 == 0:
             print('no primo')
-
-
-# 3) Crear una función que al recibir una lista de números, devuelva el que más se repite y cuántas veces lo hace. Si hay más de un "más repetido", que devuelva cualquiera
-
-# In[33]:
-
-
-def valor_modal(lista):
-    lista_unicos = []
-    lista_repeticiones = []
-    if len(lista) == 0:
-        return None
-    for elemento in lista:
-        if elemento in lista_unicos:
-            i = lista_unicos.index(elemento)
-            lista_repeticiones[i] += 1
         else:
-            lista_unicos.append(elemento)
-            lista_repeticiones.append(1)
-    moda = lista_unicos[0]
-    maximo = lista_repeticiones[0]
-    for i, elemento in enumerate(lista_unicos):
-        if lista_repeticiones[i] > maximo:
-            moda = lista_unicos[i]
-            maximo = lista_repeticiones[i]
-    return moda, maximo
+            print('primo')
+numeros_primos(lista)
 
+# crea una funcion que devuelva el nunero que mas se repite y cuantas veces
+lista = [1,2,2,3,4,4,4,5,5,5,6,6,6,6]
+frecuencia = {}
 
-lis = [1,1,5,6,8,10,22,5,6,4,11,9,5]
-moda, repite = valor_modal(lis)
-print('El valor modal es', moda, 'y se repite', repite, 'veces.')
-
-
-# 4) Crear una función que convierta entre grados Celsius, Farenheit y Kelvin<br>
-# Fórmula 1	: (°C × 9/5) + 32 = °F<br>
-# Fórmula 2	: °C + 273.15 = °K<br>
-# Debe recibir 3 parámetros: el valor, la medida de orígen y la medida de destino
-# 
-
-# In[56]:
-
-def conversion_grados(valor, origen, destino):
-    if (origen == 'celsius'):
-        if (destino == 'celsius'):
-            valor_destino = valor
-        elif (destino == 'farenheit'):
-            valor_destino = (valor * 9 / 5) + 32
-        elif (destino == 'kelvin'):
-            valor_destino = valor + 273.15
-        else:
-            print('Parámetro de Destino incorrecto')
-    elif (origen == 'farenheit'):
-        if (destino == 'celsius'):
-            valor_destino = (valor - 32) * 5 / 9
-        elif (destino == 'farenheit'):
-            valor_destino = valor
-        elif (destino == 'kelvin'):
-            valor_destino = ((valor - 32) * 5 / 9) + 273.15
-        else:
-            print('Parámetro de Destino incorrecto')
-    elif (origen == 'kelvin'):
-        if (destino == 'celsius'):
-            valor_destino = valor - 273.15
-        elif (destino == 'farenheit'):
-            valor_destino = ((valor - 273.15) * 9 / 5) + 32
-        elif (destino == 'kelvin'):
-            valor_destino = valor
-        else:
-            print('Parámetro de Destino incorrecto')
+for i in lista:
+    if i in frecuencia:
+        frecuencia[i] = frecuencia[i] + 1
     else:
-        print('Parámetro de Origen incorrecto')
-    return valor_destino
+        frecuencia[i] = 1
 
+numero_repetido = None
+repeticion = 0
+for i, frecuencia in frecuencia.items():
+    if frecuencia > repeticion:
+        numero_repetido = i
+        repeticion = frecuencia
 
-print('1 grado Celsius a Celsius:', conversion_grados(1, 'celsius', 'celsius'))
-print('1 grado Celsius a Kelvin:', conversion_grados(1, 'celsius', 'kelvin'))
-print('1 grado Celsius a Farenheit:', conversion_grados(1, 'celsius', 'farenheit'))
-print('1 grado Kelvin a Celsius:', conversion_grados(1, 'kelvin', 'celsius'))
-print('1 grado Kelvin a Kelvin:', conversion_grados(1, 'kelvin', 'kelvin'))
-print('1 grado Kelvin a Farenheit:', conversion_grados(1, 'kelvin', 'farenheit'))
-print('1 grado Farenheit a Celsius:', conversion_grados(1, 'farenheit', 'celsius'))
-print('1 grado Farenheit a Kelvin:', conversion_grados(1, 'farenheit', 'kelvin'))
-print('1 grado Farenheit a Farenheit:', conversion_grados(1, 'farenheit', 'farenheit'))
+print(numero_repetido, repeticion)
 
+# crear una funcion que convierta entre grados
 
-# 5) Iterando una lista con los tres valores posibles de temperatura que recibe la función del punto 5, hacer un print para cada combinación de los mismos:
+def conversion(celsius, farenheit):
+    celsiu_a_fa= celsius * 9/5
+    fah_a_cel = farenheit * 6
+    return celsiu_a_fa, fah_a_cel
 
-metricas = ['celsius','kelvin','farenheit']
-for i in range(0,3):
-    for j in range(0,3):
-        print('1 grado', metricas[i], 'a', metricas[j],':', conversion_grados(1, metricas[i], metricas[j]))
-
-
-# 6) Armar una función que devuelva el factorial de un número. Tener en cuenta que el usuario puede equivocarse y enviar de parámetro un número no entero o negativo
-
-def factorial(numero):
-    if(type(numero) != int):
-        return 'El numero debe ser un entero'
-    if(numero < 0):
-        return 'El numero debe ser pisitivo'
-    if (numero > 1):
-        numero = numero * factorial(numero - 1)
-    return numero
-print(factorial(3))
-print(factorial(-2))
-print(factorial(1.23))
-print(factorial('6'))
+resultado = conversion(34,65)
+print(resultado)
